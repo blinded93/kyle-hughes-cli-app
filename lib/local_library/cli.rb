@@ -12,7 +12,18 @@ class LocalLibrary::CLI
     while zip_code != 'exit'
       zip_code = gets.strip
       if ZIPS.include?(zip_code)
-        library = LocalLibrary::Scraper
+        puts "Public libraries near #{zip_code}"
+        library = LocalLibrary::Scraper.scrape_and_create(zip_code)
+        LocalLibrary::Library.libraries.each.with_index(1) do |library, i|
+          puts "#{i}. #{library.branch}"
+          puts "    #{library.phone}"
+          puts "    #{library.address}"
+          puts "    #{library.status}"
+          puts ""
+        end
+      else
+        puts "That is not a valid zip code, please try again or type 'exit' to exit program."
+      end
+    end
   end
-
 end

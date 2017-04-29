@@ -1,5 +1,4 @@
 class LocalLibrary::Scraper
-
   def self.scrape_and_create(zip_code)
     address = "https://search.yahoo.com/search?p=public+library+near+#{zip_code}"
     doc = Nokogiri::HTML(open(address))
@@ -12,6 +11,4 @@ class LocalLibrary::Scraper
       LocalLibrary::Library.libraries << library
     end
   end
-
-
 end
