@@ -1,0 +1,5 @@
+class LocalLibrary::Scraper
+
+
+
+end
