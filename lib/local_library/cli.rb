@@ -8,6 +8,19 @@ class LocalLibrary::CLI
     start
   end
 
+  def choice(zip_code)
+
+  end
+
+  def list(zip_code)
+
+  end
+
+  def details(zip_code)
+    
+  end
+
+
   def start
     zip_code = nil
     while zip_code != 'exit'
