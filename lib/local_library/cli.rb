@@ -13,11 +13,19 @@ class LocalLibrary::CLI
   end
 
   def list(zip_code)
+    LocalLibrary::Library.clear
+    puts ""
+    puts "...Public libraries near #{zip_code}..."
+    library = LocalLibrary::Scraper.scrape_and_create(zip_code)
 
+    LocalLibrary::Library.libraries.each.with_index(1) do |library, i|
+      puts "#{i}. #{library.branch}"
+    end
+    
   end
 
   def details(zip_code)
-    
+
   end
 
 
