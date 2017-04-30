@@ -17,7 +17,20 @@ class LocalLibrary::CLI
   end
 
   def choice(zip_code)
-
+    if zip_code.length == 5 && ZIPS.include?(zip_code)
+      list(zip_code)
+      puts ""
+      puts "Please enter the branch number you would like more information on or 'exit' to exit program."
+    elsif zip_code.length == 1 && zip_code.to_i.between?(1, LocalLibrary::Library.libraries.length)
+      details(zip_code)
+      puts ""
+      puts "Please enter another branch nummber, zip code or 'exit' to exit program."
+    elsif zip_code == 'exit'
+      puts ""
+      puts "Thank you for using the Local Library Finder.  Keep on learning."
+    else
+      puts "That is not a valid entry, please try again, or type 'exit' to exit program."
+    end
   end
 
   def list(zip_code)
