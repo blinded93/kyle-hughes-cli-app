@@ -21,12 +21,21 @@ class LocalLibrary::CLI
     LocalLibrary::Library.libraries.each.with_index(1) do |library, i|
       puts "#{i}. #{library.branch}"
     end
-    
+
   end
+
 
   def details(zip_code)
+      puts ""
+      puts "...Preparing branch details..."
+
+      puts "#{LocalLibrary::Library.libraries[zip_code.to_i-1].branch}"
+      puts "  #{LocalLibrary::Library.libraries[zip_code.to_i-1].phone}"
+      puts "  #{LocalLibrary::Library.libraries[zip_code.to_i-1].address}"
+      puts "  #{LocalLibrary::Library.libraries[zip_code.to_i-1].status}"
 
   end
+
 
 
   def start
