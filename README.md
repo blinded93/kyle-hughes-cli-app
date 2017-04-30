@@ -4,23 +4,11 @@ Welcome to the Local Library Finder! With this gem, you can provide any valid, 5
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'local_library'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
     $ gem install local_library
 
 ## Usage
 
-Run: ```local-library after installing gem.```
+Run: ```local-library``` after installing gem.
 
 ## Development
 
