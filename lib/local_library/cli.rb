@@ -1,8 +1,8 @@
 class LocalLibrary::CLI
+
   def call
     puts ""
-    puts "-------------------- Welcome to the Local library finder --------------------"
-    # puts ""
+    puts "____________________ Welcome to the Local Library Finder ____________________"
     puts "Please enter a zip code to find the nearest library or 'exit' to exit program."
     puts ""
     start
@@ -38,22 +38,21 @@ class LocalLibrary::CLI
     puts ""
     puts "...Public libraries near #{zip_code}..."
     library = LocalLibrary::Scraper.scrape_and_create(zip_code)
-
+      puts "_____________________________________________________________________________"
     LocalLibrary::Library.libraries.each.with_index(1) do |library, i|
       puts "#{i}. #{library.branch}"
     end
-
+      puts "_____________________________________________________________________________"
   end
-
 
   def details(zip_code)
       puts ""
       puts "...Preparing branch details..."
-
+      puts "_____________________________________________________________________________"
       puts "#{LocalLibrary::Library.libraries[zip_code.to_i-1].branch}"
       puts "  #{LocalLibrary::Library.libraries[zip_code.to_i-1].phone}"
       puts "  #{LocalLibrary::Library.libraries[zip_code.to_i-1].address}"
       puts "  #{LocalLibrary::Library.libraries[zip_code.to_i-1].status}"
-
+      puts "_____________________________________________________________________________"
   end
 end
