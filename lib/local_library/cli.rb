@@ -8,6 +8,14 @@ class LocalLibrary::CLI
     start
   end
 
+  def start
+    zip_code = nil
+    while zip_code != 'exit'
+      zip_code = gets.strip
+      choice(zip_code)
+    end
+  end
+
   def choice(zip_code)
 
   end
@@ -34,31 +42,5 @@ class LocalLibrary::CLI
       puts "  #{LocalLibrary::Library.libraries[zip_code.to_i-1].address}"
       puts "  #{LocalLibrary::Library.libraries[zip_code.to_i-1].status}"
 
-  end
-
-
-
-  def start
-    zip_code = nil
-    while zip_code != 'exit'
-      zip_code = gets.strip
-      if ZIPS.include?(zip_code)
-        puts ".....Public libraries near #{zip_code}....."
-        library = LocalLibrary::Scraper.scrape_and_create(zip_code)
-        LocalLibrary::Library.libraries.each.with_index(1) do |library, i|
-          puts "#{i}. #{library.branch}"
-          # puts "    #{library.phone}"
-          # puts "    #{library.address}"
-          # puts "    #{library.status}"
-          # puts ""
-        end
-        puts ""
-        puts "Please enter another zip code or 'exit' to exit program."
-        puts ""
-        LocalLibrary::Library.clear
-      else
-        puts "That is not a valid zip code, please try again, or type 'exit' to exit program."
-      end
-    end
   end
 end
