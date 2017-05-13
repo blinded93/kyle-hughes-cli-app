@@ -35,12 +35,25 @@ class LocalLibrary::CLI
 
   def list(zip_code)
     LocalLibrary::Library.clear
-    puts ""
-    puts "...Public libraries near #{zip_code}..."
-    library = LocalLibrary::Scraper.scrape_and_create(zip_code)
+    puts "Would you like only open libraries? y/n"
+    input = nil
+    input = gets.strip
+    if input.downcase == "y"
+      puts ""
+      puts "...Public libraries near #{zip_code}..."
+      library = LocalLibrary::Scraper.scrape_and_create_open(zip_code)
       puts "_____________________________________________________________________________"
-    LocalLibrary::Library.libraries.each.with_index(1) do |library, i|
-      puts "#{i}. #{library.branch}"
+      LocalLibrary::Library.open_libraries.each.with_index(1) do |library, i|
+        puts "#{i}. #{library.branch}"
+      end
+    elsif input.downcase == "n"
+      puts ""
+      puts "...Public libraries near #{zip_code}..."
+      library = LocalLibrary::Scraper.scrape_and_create(zip_code)
+        puts "_____________________________________________________________________________"
+      LocalLibrary::Library.libraries.each.with_index(1) do |library, i|
+        puts "#{i}. #{library.branch}"
+      end
     end
       puts "_____________________________________________________________________________"
   end

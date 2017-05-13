@@ -6,17 +6,20 @@ class LocalLibrary::Library
 
   def initialize(branch)
     @branch = branch
+    @@libraries << self
   end
 
   def self.libraries
     @@libraries
   end
 
-  def self.array_length
-    self.libraries.length
-  end
-
   def self.clear
     self.libraries.clear
+  end
+
+  def self.open_libraries
+    self.libraries.select do |library|
+      library.status == "Open"
+    end
   end
 end
